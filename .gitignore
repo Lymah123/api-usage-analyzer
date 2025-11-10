@@ -1,0 +1,30 @@
+# Rust build artifacts
+/target/
+**/target/
+
+# VSCode settings
+.vscode/
+
+# Node.js (frontend) dependencies and build
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Python (if using notebooks)
+/*.ipynb_checkpoints
+
+# Environment files
+*.env
+*.env.*
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+backend/check_output.txt
