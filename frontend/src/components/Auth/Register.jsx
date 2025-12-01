@@ -14,12 +14,30 @@ export default function Register() {
   const navigate = useNavigate();
   const { setAuth } = useAuthStore();
 
+  // Password validation function
+  const passwordValid = (password) => {
+    return (
+      password.length >= 8 &&
+      /[A-Z]/.test(password) &&
+      /[a-z]/.test(password) &&
+      /[^A-Za-z0-9]/.test(password)  
+    );
+  };
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!passwordValid(form.password)) {
+      toast.error(
+        'Password must be at least 8 characters long and include uppercase, lowercase, and a symbol.'
+      );
+      return;
+    }
+
     setLoading(true);
     toast.dismiss();
 
@@ -70,7 +88,6 @@ export default function Register() {
             className="w-full border px-3 py-2 rounded"
             value={form.organization}
             onChange={handleChange}
-            required
           />
         </div>
         <div className="mb-4">
